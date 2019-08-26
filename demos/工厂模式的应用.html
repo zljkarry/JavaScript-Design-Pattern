@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" id="create">
+        <div>
+            姓名：
+            <input type="text" name="name">
+        </div>
+        <div>
+            <select name="type" id="">
+                <option value="文科">文科</option>
+                <option value="理科">理科</option>
+            </select>
+        </div>
+        <button type="submit">创建学生</button>
+    </form>
+
+    <script>
+        init()
+        function init() {
+            var create  = document.getElementById('create')
+            create.addEventListener('submit',function(e){
+                e.preventDefault()
+                var name = document.querySelector('[name=name]').value
+                var type = document.querySelector('[name=type]').value
+                var student = factory(name,type)
+                create.reset()
+                console.log(student)
+            })
+        }
+        function Student(name, subjects) {
+            this.name = name
+            this.subjects = subjects
+        }
+        function factory(name, type) {
+            switch (type) {
+                case '文科':
+                    return new Student(name, ['政治', '历史', '地理'])
+                    break;
+                case '理科':
+                    return new Student(name, ['物理', '化学', '生物'])
+                    break;
+                default:
+                    throw '没有这个专业'
+            }
+        }
+
+
+        // 抽象工厂模式
+        // function userProducer (factory){
+        //     switch(factory){
+        //         case 'student':
+        //         return studentFactory;
+        //         break;
+        //         case 'teacher':
+        //         return teacherFactory;
+        //         break;
+        //         default:
+        //         return '没有这个工厂'
+        //     }
+        // }
+
+    </script>
+</body>
+
+</html>

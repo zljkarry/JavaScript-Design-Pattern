@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- es5 -->
+    <script>
+
+        var studentCount = 0
+        function Student() {
+
+        }
+
+        function studentBuilder() {
+            this.student = new Student();
+
+            this.setName = function (name) {
+                this.student.name = name
+            }
+
+            this.setGender = function (gender) {
+                this.student.gender = gender
+            }
+
+            this.setHairLength = function (hairLength) {
+                if (this.student.gender === '男' && hairLength > 5 || this.student.gender === '女' && hairLength > 25) {
+                    throw '回去剪头'
+                }
+                this.student.hairLength = hairLength
+            }
+
+            this.build = function () {
+                studentCount++;
+                console.log(studentCount)
+                return this.student
+            }
+        }
+
+
+        var builder = new studentBuilder()
+        builder.setName('张三')
+        builder.setGender('男')
+        builder.setHairLength(10)
+        var zs = builder.build()
+
+
+        var builder2 = new studentBuilder()
+        builder2.setName('李四')
+        builder2.setGender('女')
+        builder2.setHairLength(20)
+        var ls = builder.build()
+
+        console.log(zs)
+        console.log(ls)
+    </script>
+
+    <!-- es6 -->
+    <!-- <script>
+
+        let studentCount = 0
+        class Student {
+
+        }
+
+        class studentBuilder {
+            constructor() {
+                this.student = new Student();
+            }
+
+
+            setName(name) {
+                this.student.name = name
+            }
+
+            setGender(gender) {
+                this.student.gender = gender
+            }
+
+            setHairLength(hairLength) {
+                if (this.student.gender === '男' && hairLength > 5 || this.student.gender === '女' && hairLength > 25) {
+                    throw '回去剪头'
+                }
+                this.student.hairLength = hairLength
+            }
+
+            build() {
+                studentCount++;
+                console.log(studentCount)
+                return this.student
+            }
+        }
+
+        Student.prototype.setName = function (name) {
+            this.student.name = name
+        }
+
+        this.setGender = function (gender) {
+            this.student.gender = gender
+        }
+
+        Student.prototype.setHairLength = function (hairLength) {
+            if (this.student.gender === '男' && this.student.hairLength > 5 || this.student.gender === '女' && this.student.hairLength > 25) {
+                throw '回去剪头'
+            }
+            this.student.hairLength = hairLength
+        }
+
+        Student.prototype.build = function () {
+            studentCount++;
+            console.log(studentCount)
+            return this.student
+        }
+
+
+        var builder = new studentBuilder()
+        builder.setName('张三')
+        builder.setGender('男')
+        builder.setHairLength(2)
+        var zs = builder.build()
+
+
+        var builder2 = new studentBuilder()
+        builder2.setName('李四')
+        builder2.setGender('女')
+        builder2.setHairLength(20)
+        var ls = builder.build()
+
+        console.log(zs)
+        console.log(ls)
+    </script> -->
+</body>
+
+</html>

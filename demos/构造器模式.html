@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // es5
+
+        function Student(name, gender, score) {
+
+            this.name = name
+            this.gender = gender
+            this.score = score
+            this.quality = 100 //默认100
+
+
+            this.sumScore = function (score, quality) {
+                return this.score + this.quality
+            }
+        }
+
+        var zs = new Student('张三', '男', 98)
+        var ls = new Student('李四', '女', 90)
+        
+        console.log(zs.name, zs.sumScore)
+        console.log(ls.name, ls.sumScore)
+
+
+
+        // var zs = {}
+        // zs.name = "张三"
+        // zs.gender = "男"
+        // zs.score = 98
+        // zs.quality = 100
+
+
+        // var ls = {}
+        // ls.name = "李四"
+        // ls.gender = "女"
+        // ls.score = 80
+        // ls.quality = 100
+
+
+        // console.log(zs.name)
+        // console.log(ls.name)
+
+
+
+
+
+
+        // es6
+
+        // class Student {
+        //     constructor(name, gender, score) {
+        //         this.name = name
+        //         this.gender = gender
+        //         this.score = score
+        //         this.quality = 100 //默认100
+        //     }
+
+        //     sumScore (score, quality) {
+        //         return this.score + this.quality
+        //     }
+        // }
+
+        // var zs = new Student('张三', '男', 98)
+        // var ls = new Student('李四', '女', 90)
+
+        // console.log(zs.name, zs.sumScore)
+        // console.log(ls.name, ls.sumScore)
+    </script>
+</body>
+
+</html>

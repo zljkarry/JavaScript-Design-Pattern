@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function money(){
+        if(money.instance)
+        return money.instance
+        else {
+            this.balance = 100
+            money.instance = this
+        }
+    }
+    var r1 = new money()
+    console.log('r1:' + r1.balance)
+    r1.balance = 50
+    console.log('r1:' + r1.balance)
+    var r2 = new money()
+    console.log('r1:' + r1.balance)
+    console.log('r2:' + r2.balance)
+    r2.balance = 40
+    console.log('r1:' + r1.balance)
+    console.log('r2:' + r2.balance)
+    </script>
+</body>
+</html>

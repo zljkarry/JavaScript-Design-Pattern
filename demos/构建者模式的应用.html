@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="create">
+        <div>
+            姓名：
+            <input type="text" name="name" autofocus>
+
+        </div>
+        <div>
+            性别：
+            <input type="radio" name="gender" id="" value="女" checked>女
+            <input type="radio" name="gender" id="" value="男">男
+        </div>
+        <div>
+            头发长度：
+            <input type="number" name="hairLength" id="">
+        </div>
+
+        <button type="submit">创建学生</button>
+    </form>
+    <script>
+        var createForm = document.getElementById('create')
+        init()
+        function init() {
+            createForm.addEventListener('submit', function (e) {
+                e.preventDefault()
+                var name = document.querySelector('[name=name]').value
+                var gender = document.querySelector('[name=gender]:checked').value
+                var hairLength = document.querySelector('[name=hairLength]').value
+                console.log(name, gender, hairLength)
+
+
+
+                var builder = new studentBuilder()
+                builder.setName(name)
+                builder.setGender(gender)
+                builder.setHairLength(hairLength)
+                var student = builder.build()
+
+                console.log(student)
+
+                // try{
+                //     var builder = new studentBuilder()
+                // builder.setName(name)
+                // builder.setGender(gender)
+                // builder.setHairLength(hairLength)
+                // var student = builder.build()
+                // }catch(e){
+                //     alert(e);
+                // }
+
+                create.reset()
+            })
+        }
+
+        function Student() {
+
+        }
+
+        function studentBuilder() {
+            this.student = new Student();
+
+            this.setName = function (name) {
+                this.student.name = name
+            }
+
+            this.setGender = function (gender) {
+                this.student.gender = gender
+            }
+
+            this.setHairLength = function (hairLength) {
+                if (this.student.gender === '男' && hairLength > 5 || this.student.gender === '女' && hairLength > 25) {
+                    throw '回去剪头'
+                }
+                this.student.hairLength = hairLength
+            }
+
+            this.build = function () {
+                return this.student
+            }
+        }
+
+    </script>
+</body>
+
+</html>
